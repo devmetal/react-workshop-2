@@ -22,11 +22,20 @@ export default class extends Component {
     };
   }
 
-  flip = (index) => {
+ flip = (index) => {
     this.setState({
       flipped: this.state.flipped + 1,
-      faces: this.state.faces.map((face, i) => {}),
-    })
+      faces: this.state.faces.map((face, i) => {
+        if (index !== i) {
+          return face;
+        }
+
+        return {
+          ...face,
+          flipped: true,
+        }
+      })
+    });
   }
 
   check = (index) => {
@@ -40,13 +49,7 @@ export default class extends Component {
   }
 
   reset = (c1, c2) => {
-    setTimeout(() => {
-      this.setState({
-        candidate: false,
-        flipped: 0,
-        faces: this.state.faces.map((face, i) => {})
-      })
-    }, 1500);
+    
   }
 
   render() {

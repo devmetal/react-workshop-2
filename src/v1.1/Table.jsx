@@ -39,7 +39,7 @@ export default class extends Component {
   }
 
   check = (index) => {
-    const { faces, candidate } = this.state;
+    const { candidate } = this.state;
     if (candidate === false) {
       this.setState({ candidate: index });
       return;

@@ -5,8 +5,8 @@ import './Card.css'
 
 export default class extends Component {
   flip = () => {
-    const {flipped, index, onFlip } = this.props;
-    if (flipped) {
+    const { frozen, flipped, index, onFlip } = this.props;
+    if (frozen || flipped) {
       return;
     }
     onFlip(index);
@@ -14,7 +14,7 @@ export default class extends Component {
 
   render() {
     const { flipped, title } = this.props;
-    const flippedCSS = flipped ? " Card-Back-Flip" : " Card-Front-Flip";
+    let flippedCSS = flipped ? " Card-Back-Flip" : " Card-Front-Flip";
     
     return (
       <div className="Card" onClick={this.flip}>
